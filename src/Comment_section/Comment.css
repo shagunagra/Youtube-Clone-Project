@@ -2,6 +2,7 @@
     font-weight: bolder;
     font-size: larger;
     margin-left: 5%;
+    color: grey;
 }
 .input_content{
     display: flex;
@@ -42,15 +43,31 @@
       width: 6%;
       height: 30px;
       background-color: white;
-      border: 1px solid black;
+      border: 1px solid grey;
       margin-left: 1130px;
       margin-top: 2%;
+      color: grey;
   }
   .cancel_btn{
     width: 6%;
     height: 30px;
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid grey;
     margin-left: 1%;
     margin-top: 2%;
+    color: grey;
+}
+.icon{
+  font-size: 20px;
+  margin-left: 5%;
+  color: grey;
+}
+.get_name{
+  font-weight: bolder;
+  color: grey;
+  margin-left: 0.5%;
+}
+.get_comment{
+  color: grey;
+  margin-left: 7%;
 }
