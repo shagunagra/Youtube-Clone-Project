@@ -9,7 +9,6 @@ class Main extends Component{
         return(
             <div>
                 <Navigation/>
-                <Videos/>
                 <Comment/>
             </div>
         )
