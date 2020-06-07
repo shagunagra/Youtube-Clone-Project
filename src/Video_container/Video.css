@@ -1,3 +1,4 @@
+
 .video_show{
     height: 200px;
 }
@@ -5,7 +6,7 @@
     display: flex;
     flex-direction: row;
 }
-iframe {
+.frame {
     width: 950px;
     height: 500px;
     margin-left: 4%;
@@ -21,4 +22,35 @@ iframe {
     color: grey;
     margin-left: 4%;
     font-weight: bolder;
+}
+#redheart{
+    color: red;
+    font-size: 25px;
+  
+}
+#heart{
+    font-size: 25px;
+    margin-left: 100%;
+}
+.section_show{
+    margin-left: 15%;
+    margin-top: 10%;
+    display: flex;
+}
+.small_videos{
+    width: 200px;
+    height: 100px;
+}
+.video_list{
+    margin-left: 2%;
+}
+.side_title{
+    color: black;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.side_channel{
+    color: grey;
+    font-weight: bolder;
+    margin-left: 10px;
 }
