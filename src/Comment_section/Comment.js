@@ -9,7 +9,8 @@ class Comment extends Component{
       {
           id: 0,
           name: ' ',
-         comment: ' '
+         comment: ' ',
+         set_bool: 'false'
       }
     ]
   }
@@ -22,21 +23,14 @@ class Comment extends Component{
     this.setState({
       people: newInfo
     })
+    this.setState({set_bool: "true"});
   } 
-
-  componentDidMount(){
-    console.log("I am Mounting right now. I happen only once!!")
-  }
-
-  componentDidUpdate(){
-    console.log("I am updating right now. I happen everytime there is an update!!")
-  }
   
   render(){
     return (
           <div className="App">
             <AddPeople addPerson={this.addPerson}></AddPeople>
-            <Display people={this.state.people}></Display>
+            <Display people={this.state.people} set_bool={this.state.set_bool}></Display>
           </div>
         );
       }
