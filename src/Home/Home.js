@@ -2,11 +2,10 @@ import React, {Component} from 'react';
 import '../Video_container/Video.css';
 import 'font-awesome/css/font-awesome.min.css';
 import data1 from '../VideoData.json';
-import Comment from '../Comment_section/Comment';
+import Comment from '../Comment_container/Comment';
 import Navigation from '../Navigation_panel/Navigation';
 
 const data = data1.items;
-const tile = data1.items[0];
 
 
 
@@ -16,9 +15,10 @@ class Home extends Component{
         super();
         this.state = {
             video: {},
-            videoid: 'nqzIQh2D_Es',
+            videoid: 'IBvg3WeqP1U',
             basicUrl: 'http://www.youtube.com/embed',
-            title: 'Trending Nakhra (Full Video) | Amrit Maan ft. Ginni Kapoor | Intense || Latest Songs 2018'
+            get_tile: 'Bole Chudiyan Full Video - K3G|Amitabh, Shah Rukh, Kajol, Kareena, Hrithik|Udit Narayan',
+            get_channel: 'SonyMusicIndiaVEVO',
         }
     }
 
@@ -26,11 +26,10 @@ class Home extends Component{
         document.getElementById('heart').innerHTML="<i class='fa fa-heart' aria-hidden='true' id='redheart'></i>";
     }
 
-    videoClickHandler =(id,titles)=>{
-        console.log(titles);
-        console.log(id);
-        this.setState({videoId: id});
-        this.setState({title: titles});
+    videoClickHandler =(id,titles,cha)=>{
+        this.setState({videoid: id});
+        this.setState({get_tile: titles});
+        this.setState({get_channel: cha});
     }
 
     render(){
@@ -45,8 +44,8 @@ class Home extends Component{
                            allowFullScreen
                            title='video'/>
                          <br/>
-                            <span className="title" >{tile.snippet.title}</span><br/>
-                            <span className="channel_name">{tile.snippet.channelTitle}</span>
+                            <span className="title" >{this.state.get_tile}</span><br/>
+                            <span className="channel_name">{this.state.get_channel}</span>
                 
                         <span onClick={this.getRedHandler} id="heart"><i className="fa fa-heart-o" aria-hidden="true"></i></span>
                         <Comment/>
@@ -58,7 +57,7 @@ class Home extends Component{
                             <section>
                                 {data.map((getData)=>(
                                     <div    style={{display: "flex", flexDirection: "row", marginTop: "40px"}}>
-                                        <img id={getData.id.videoId} src={getData.snippet.thumbnails.high.url} style={{height: "120px", width: "140px", marginLeft: "25px"}} onClick={this.videoClickHandler.bind(this, getData.id.videoId,getData.snippet.title)}/>
+                                        <img id={getData.id.videoId} src={getData.snippet.thumbnails.high.url} alt="anyname" style={{height: "120px", width: "140px", marginLeft: "25px", cursor: "pointer"}} onClick={this.videoClickHandler.bind(this, getData.id.videoId,getData.snippet.title,getData.snippet.channelTitle)}/>
                                         <section style={{position: "relative", top: "0px"}}>
                                             <p style={{position: "absolute", width: "242px"}}>
                                                 <span style={{fontWeight: "bolder",marginLeft: "20px", position: "absolute"}}>{getData.snippet.title}<br/><span style={{color: "grey", fontWeight: "bold"}}>{getData.snippet.channelTitle}</span></span>
