@@ -10,9 +10,9 @@ class Comment extends Component{
           id: 0,
           name: ' ',
          comment: ' ',
-         set_bool: 'false'
       }
-    ]
+    ],
+    set_bool: "false"
   }
 
   addPerson = (info) => {
@@ -23,7 +23,8 @@ class Comment extends Component{
     this.setState({
       people: newInfo
     })
-    this.setState({set_bool: "true"});
+    this.setState({set_bool: "true"})
+    console.log(this.state.people);
   } 
   
   render(){
