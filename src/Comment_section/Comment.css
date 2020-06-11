@@ -3,29 +3,29 @@
     font-size: larger;
     margin-left: 5%;
     color: grey;
-}
-.input_content{
+  }
+  .input_content{
     display: flex;
     justify-content: space-between;
-    width: 100%;
-}
-.your_name{
+    width: 102.5%;
+  }
+  .your_name{
     border-top: 0;
     border-left: 0;
     border-right: 0;
     color: grey;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     
-}
-.your_comment{
+  }
+  .your_comment{
     border-top: 0;
     border-left: 0;
     border-right: 0;
     color: grey;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
-}
-.form {
+  
+  }
+  .form {
     margin: 0 auto;
     padding: 10px;
     width: 90%;
@@ -40,34 +40,34 @@
     width: 100%;
   }
   .comment_btn{
-      width: 6%;
+      width: 8%;
       height: 30px;
       background-color: white;
       border: 1px solid grey;
-      margin-left: 1130px;
+      margin-left: 730px;
       margin-top: 2%;
       color: grey;
   }
   .cancel_btn{
-    width: 6%;
+    width: 8%;
     height: 30px;
     background-color: white;
     border: 1px solid grey;
     margin-left: 1%;
     margin-top: 2%;
     color: grey;
-}
-.icon{
+  }
+  .icon{
   font-size: 20px;
   margin-left: 5%;
   color: grey;
-}
-.get_name{
+  }
+  .get_name{
   font-weight: bolder;
   color: grey;
   margin-left: 0.5%;
-}
-.get_comment{
+  }
+  .get_comment{
   color: grey;
   margin-left: 7%;
-}
+  }
