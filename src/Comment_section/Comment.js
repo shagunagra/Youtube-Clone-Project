@@ -1,63 +1,45 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import './Comment.css';
+import React, { Component } from 'react';
+import Display from './Display';
+import AddPeople from './AddPeople';
+
 
 class Comment extends Component{
-
-
-    constructor(){
-        super();
-        this.state={
-            id: 0,
-            name: '',
-            comment: '',
-            show:false
-        }
-    }
-
-    inputChangedHandler = (e) =>{
-        const state=this.state;
-        state[e.target.name]=e.target.value;
-        this.setState(state);
-
-    }
-
-    handleClick = () => {
-        ReactDOM.findDOMNode(this.refs.form1).value = "";
-        ReactDOM.findDOMNode(this.refs.form2).value = "";
+  state = {
+    people: [
+      {
+          id: 0,
+          name: ' ',
+         comment: ' '
       }
+    ]
+  }
 
-    render(){
-        const {name,comment}=this.state;
-        return(
-            <div>
+  addPerson = (info) => {
+    info.id = Math.floor(Math.random() * 100);
 
+    let newInfo = [...this.state.people, info];
 
-                <div className="comment_content">
-                    <p className="comment_section">Comments</p>
-                    <form className="form">
-                        <div className="input_content">
-                            <div>
-                                <input type="text" ref="form1" className="your_name" placeholder="Your Name" id="name" name="name" onChange={this.inputChangedHandler}/>
-                            </div>
-                            <div>
-                                <input type="text" ref="form2" className="your_comment" placeholder="Your Comment" id="comment" name="comment" onChange={this.inputChangedHandler}/>
-                            </div>
-                        </div>
-                    </form>
-                    <button className="comment_btn" id="comment" onClick={()=>{this.setState({show:!this.state.show})}}>Comment</button>
-                    <button className="cancel_btn" id="cancel" onClick={this.handleClick}>Cancel</button>
-                </div>
-                {
-                    this.state.show? <div id="comment_form">
-                        <span className="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                        <span className="get_name"> {name} </span><br/>
-                        <span className="get_comment"> {comment} </span>
-                    </div>: null
-                }
-            </div>
-        )
+    this.setState({
+      people: newInfo
+    })
+  } 
+
+  componentDidMount(){
+    console.log("I am Mounting right now. I happen only once!!")
+  }
+
+  componentDidUpdate(){
+    console.log("I am updating right now. I happen everytime there is an update!!")
+  }
+  
+  render(){
+    return (
+          <div className="App">
+            <AddPeople addPerson={this.addPerson}></AddPeople>
+            <Display people={this.state.people}></Display>
+          </div>
+        );
+      }
     }
-}
 
 export default Comment;
