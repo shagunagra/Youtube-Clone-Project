@@ -17,7 +17,8 @@ class Home extends Component{
         this.state = {
             video: {},
             videoid: 'nqzIQh2D_Es',
-            basicUrl: 'http://www.youtube.com/embed'
+            basicUrl: 'http://www.youtube.com/embed',
+            title: 'Trending Nakhra (Full Video) | Amrit Maan ft. Ginni Kapoor | Intense || Latest Songs 2018'
         }
     }
 
