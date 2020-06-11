@@ -3,7 +3,6 @@ import './Video.css';
 import 'font-awesome/css/font-awesome.min.css';
 import Comment from '../Comment_section/Comment';
 import Navigation from '../Navigation_panel/Navigation';
-import axios from "axios";
 
 
 class Videos extends Component{
@@ -11,7 +10,9 @@ class Videos extends Component{
     constructor() {
         super();
         this.state = {
-           videoDetail: [{}]
+           videoDetail: [{}],
+           search_bool: 'false',
+           success: "false"
         }
     }
 
@@ -58,11 +59,11 @@ class Videos extends Component{
 
 
                     <div className="video_list">
-                        {
+                        {this.state.success === "true" && this.state.search_bool === "true" &&
                             <section>
                             {this.state.videoDetail.map((getData)=>(
                                 <div key={getData.id} style={{display: "flex", flexDirection: "row", marginTop: "40px"}}>
-                                    <img id={getData.id.videoId} src={getData.snippet.thumbnails.high.url} style={{height: "120px", width: "140px", marginLeft: "25px"}} />
+                                    <img id={getData.id.videoId} src={getData.snippet.thumbnails.high.url} alt="anyname" style={{height: "120px", width: "140px", marginLeft: "25px"}} />
                                     <section style={{position: "relative", top: "0px"}}>
                                         <p style={{position: "absolute", width: "242px"}}>
                                             <span style={{fontWeight: "bolder",marginLeft: "20px", position: "absolute"}}>{getData.snippet.title}<br/><span style={{color: "grey", fontWeight: "bold"}}>{getData.snippet.channelTitle}</span></span>
@@ -73,6 +74,8 @@ class Videos extends Component{
                             ))}
                         </section>
                         }
+                        {this.state.success === "true" && this.state.search_bool === "true"&&
+                        <h1 style={{textAlign: "center", marginTop: "25%"}}>No Videos Found</h1>}
                     </div>
                 </div>
             </div>
