@@ -2,14 +2,17 @@ import React, {Component} from 'react';
 import '../Video_container/Video.css';
 import 'font-awesome/css/font-awesome.min.css';
 import data1 from '../VideoData.json';
-import Comment from '../Comment_container/Comment';
+import Comment from '../Comment_section/Comment';
 import Navigation from '../Navigation_panel/Navigation';
+
+//the main home js file when the site is opened this home page is visible.
 
 const data = data1.items;
 
 
 
 class Home extends Component{
+
 
     constructor() {
         super();
@@ -22,9 +25,13 @@ class Home extends Component{
         }
     }
 
+
+
     getRedHandler(){
         document.getElementById('heart').innerHTML="<i class='fa fa-heart' aria-hidden='true' id='redheart'></i>";
     }
+
+
 
     videoClickHandler =(id,titles,cha)=>{
         this.setState({videoid: id});
@@ -32,11 +39,17 @@ class Home extends Component{
         this.setState({get_channel: cha});
     }
 
+
+
     render(){
         return(
             <div>
+
                 <Navigation/>
+
                 <div className="main_container">
+
+
                     <div className="video_show">
                         <iframe className="frame" src={this.state.basicUrl + "/" + this.state.videoid}
                            frameBorder='0'
@@ -55,8 +68,10 @@ class Home extends Component{
                     <div className="video_list">
                         {
                             <section>
-                                {data.map((getData)=>(
-                                    <div    style={{display: "flex", flexDirection: "row", marginTop: "40px"}}>
+                                {data.map((getData,i)=>(
+                                    <div key={i}>
+                                        {i !== 0 &&
+                                    <div style={{display: "flex", flexDirection: "row", marginTop: "40px"}}>
                                         <img id={getData.id.videoId} src={getData.snippet.thumbnails.high.url} alt="anyname" style={{height: "120px", width: "140px", marginLeft: "25px", cursor: "pointer"}} onClick={this.videoClickHandler.bind(this, getData.id.videoId,getData.snippet.title,getData.snippet.channelTitle)}/>
                                         <section style={{position: "relative", top: "0px"}}>
                                             <p style={{position: "absolute", width: "242px"}}>
@@ -65,10 +80,14 @@ class Home extends Component{
                                             <br/><br/>
                                         </section>
                                     </div>
+                                    }
+                                    </div>
                                 ))}
                             </section>
                         }
                     </div>
+
+                    
                 </div>
             </div>
         )
