@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import Display from './Display';
 import AddPeople from './AddPeople';
 
+//this js file calls the display and addperson js file.
 
 class Comment extends Component{
+
+
   state = {
     people: [
       {
@@ -12,8 +15,10 @@ class Comment extends Component{
          comment: ' ',
       }
     ],
-    set_bool: "false"
+    set_bool: "false",
   }
+
+
 
   addPerson = (info) => {
     info.id = Math.floor(Math.random() * 100);
@@ -24,8 +29,8 @@ class Comment extends Component{
       people: newInfo
     })
     this.setState({set_bool: "true"})
-    console.log(this.state.people);
   } 
+  
   
   render(){
     return (
