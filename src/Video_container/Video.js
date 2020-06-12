@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import './Video.css';
 import 'font-awesome/css/font-awesome.min.css';
-import Comment from '../Comment_container/Comment';
+import Comment from '../Comment_section/Comment';
 import Navigation from '../Navigation_panel/Navigation';
 
+// the js file of the videos which opens when the search button is clicked.
 
 class Videos extends Component{
+
 
     constructor() {
         super();
         this.state = {
            videoDetail: ' ',
+           item_one: ' ',
            search_bool: 'false',
            videoid: '9LtH9CsbRe4',
            basicUrl: 'http://www.youtube.com/embed',
@@ -25,6 +28,8 @@ class Videos extends Component{
         document.getElementById('heart').innerHTML="<i class='fa fa-heart' aria-hidden='true' id='redheart'></i>";
     }
 
+
+
     componentDidMount() {
         let data = null;
         let xhr = new XMLHttpRequest();
@@ -33,16 +38,18 @@ class Videos extends Component{
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === 4 && this.status === 200) {
 
-                console.log(JSON.parse(this.responseText));
                 that.setState({videoDetail : JSON.parse(this.responseText).items});
                 that.setState({search_bool: "true"});
                 that.setState({success: "true"});
+                that.setState({item_one:  JSON.parse(this.responseText).items[0]});
             }
         })
         xhr.open("GET",url,true);
         xhr.setRequestHeader("Cache-Control", "no-cache");
         xhr.send(data);
     }
+
+
 
     videoClickHandler =(id,titles,cha)=>{
         this.setState({videoid: id});
@@ -51,10 +58,13 @@ class Videos extends Component{
     }
 
 
+
     render(){
         return(
             <div>
+
                  <Navigation/>
+
                 <div className="main_container">
                     <div className="video_show">
                         <iframe className="frame" src={this.state.basicUrl + "/" + this.state.videoid}
@@ -70,10 +80,14 @@ class Videos extends Component{
                     </div>
 
 
+
+
                     <div className="video_list">
                         {this.state.success === "true" && this.state.search_bool === "true" &&
                             <section>
-                            {this.state.videoDetail.map((getData)=>(
+                            {this.state.videoDetail.map((getData,i)=>(
+                                <div key={i}>
+                                    {i !== 0 &&
                                 <div key={getData.id} style={{display: "flex", flexDirection: "row", marginTop: "40px"}}>
                                     <img id={getData.id.videoId} src={getData.snippet.thumbnails.high.url} alt="anyname" style={{height: "120px", width: "140px", marginLeft: "25px", cursor: "pointer"}} onClick={this.videoClickHandler.bind(this, getData.id.videoId,getData.snippet.title,getData.snippet.channelTitle)}/>
                                     <section style={{position: "relative", top: "0px"}}>
@@ -83,12 +97,17 @@ class Videos extends Component{
                                         <br/><br/>
                                     </section>
                                 </div>
+                                    }
+                                </div>
                             ))}
                         </section>
                         }
                         {this.state.success === "true" && this.state.search_bool === "false"&&
                         <h1 style={{textAlign: "center", marginTop: "25%"}}>No Videos Found</h1>}
                     </div>
+
+
+
                 </div>
             </div>
         )
