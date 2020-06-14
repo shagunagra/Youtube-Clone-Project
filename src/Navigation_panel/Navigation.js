@@ -8,9 +8,19 @@ import Videos from '../Video_container/Video';
 
 class Navigation extends Component{
 
+    constructor(){
+        super();
+        this.state ={
+            video_name: " "
+        }
+    }
+
+    videoHandler =(e) =>{
+        this.setState({video: e.target.value});
+    }
     
     gotHandler = (e) =>{
-        ReactDOM.render(<Videos/>,document.getElementById('root'));
+        ReactDOM.render(<Videos  video={this.state.video}/>,document.getElementById('root'));
     }
 
 
@@ -18,7 +28,7 @@ class Navigation extends Component{
         return(
 
             <div>
-                    <input id="search" type="text" className="search_content" placeholder="Search"/>
+                    <input id="search" type="text" className="search_content" placeholder="Search" onChange={this.videoHandler}/>
                     <button onClick={this.gotHandler} className="search_button" id="button">Search</button>
                     <hr className="line"/>
             </div>
